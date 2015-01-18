@@ -1,6 +1,13 @@
 <?/**
  * @var $this FotoramaWidget
- */ ?>
+ */
+foreach ($data as $photo) {
+    Yii::app()->clientScript->registerMetaTag(Yii::app()->getRequest()->hostInfo.$photo['photoSrc'], 'og:image');
+    Yii::app()->clientScript->registerMetaTag('image/jpeg', 'og:image:type');
+    Yii::app()->clientScript->registerMetaTag($photo['sizeOriginal']['width'], 'og:image:width');
+    Yii::app()->clientScript->registerMetaTag($photo['sizeOriginal']['height'], 'og:image:height');
+}?>
+
 <div class="fotorama"
      data-nav="thumbs"
      data-width="<?=$this->width?>"

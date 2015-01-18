@@ -45,6 +45,10 @@ class FotoramaWidget extends CWidget
 				'photoSrc' => $photoSrc,
 				'photoNavSrc' => $photoNavSrc,
 				'size' => $sizeString,
+				'sizeOriginal' => array(
+                    'width' => $photo->width,
+                    'height' => $photo->height,
+                ),
 			);
 		}
 
