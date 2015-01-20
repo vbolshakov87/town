@@ -20,7 +20,7 @@ $this->renderPartial('webroot.themes.yar.views._pageMetaTags', array('title' => 
 $imageSrc = $story->getImageSrc('story/thumb', 'image', true);
 $imageDetailSrc = $story->getImageSrc('story/detail', 'image', true);
 ?>
-<a href="<?=$imageDetailSrc?>" class="fancybox"><img src="<?=$imageSrc?>" alt="<?=$story->title?>" class="photo-top"></a>
+<a href="<?=$imageDetailSrc?>" class="fancybox-gallery" rel="fancybox" title="<?=$story->title?>"><img src="<?=$imageSrc?>" alt="<?=$story->title?>" class="photo-top"></a>
 
 <?endif;?>
 <?$this->renderPartial('webroot.themes.yar.views._detailPageRatingStars', array('model' => $story));?>

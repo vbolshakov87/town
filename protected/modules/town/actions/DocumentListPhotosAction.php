@@ -15,6 +15,7 @@ class DocumentListPhotosAction extends DocumentListRedactionAction
 	//	$criteria->with[] = 'gallery';
 		$criteria->scopes[] = 'active';
 		$criteria->scopes['scopeRubric'] =  array('rubricId' => $this->_rubricId);
+        $criteria->addCondition('(SELECT count(1) from gallery_photo where gallery_photo.essence = \'photo_story\' and gallery_photo.`essence_id` = t.id limit 0,1) > 0');
 		return $criteria;
 	}
 } 

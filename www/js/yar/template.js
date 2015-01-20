@@ -208,15 +208,17 @@ application.blocks.photos = function()
 
 $(document).ready(function(){
 
-    $('.content-story-detail').each(function () {
+    $('.content-story-detail .col-cont').each(function () {
         $(this).find('img').each(function(){
-           if (!$(this).parent().hasClass('fancybox')) {
-               $(this).addClass('fancybox');
-           }
+            var $img = $(this),
+                href = $img.attr('src'),
+                title = $img.attr('title');
+            if ($img.parent().prop('href') == undefined) {
+                $img.wrap('<a href="' + href + '" class="fancybox-gallery" rel="fancybox" title="'+title+'"></a>');
+            }
         });
     })
 
-    $('.fancybox').fancybox();
 
     $(".fancybox-gallery").fancybox({
         prevEffect		: 'none',
