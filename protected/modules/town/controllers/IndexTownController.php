@@ -48,7 +48,7 @@ class IndexTownController extends FrontController
 			$cacheValue = false;
 			if ($cacheValue === false) {
 				$criteria = new SphinxCriteria(array(
-					'index' => 'oldYar',
+					'index' => 'oldyar',
 					'text' => $text,
 					'weight' => array ( 'title'=>10, 'brief'=>5, 'text' => 1 ),
 					'order' => $order,
@@ -65,7 +65,7 @@ class IndexTownController extends FrontController
 				$documentIds = array();
 				$highlights = array();
 				$searchResults = array();
-
+			//	print_r($data);
 
 				foreach ($data['matches'] as $match) {
 					$documentIds[] = $match['id'];

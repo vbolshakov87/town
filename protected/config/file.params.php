@@ -26,7 +26,7 @@ $fileParams = array(
 		'source' => 'story/source', 'width' => 500, 'height' => 500, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/story_form', 'folder'=>'/uploads/story_form', 'resize' => true, 'original' => false,  'crop' => false, 'proportion' => true,
 	),
 	'story/thumb' => array(
-		'source' => 'story/source', 'width' => 640, 'height' => 800, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/story_thumb', 'folder'=>'/uploads/story_on_thumb', 'resize' => true, 'original' => false,  'crop' => false, 'proportion' => true,
+		'source' => 'story/source', 'width' => 640, 'height' => 800, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/story_on_thumb', 'folder'=>'/uploads/story_on_thumb', 'resize' => true, 'original' => false,  'crop' => false, 'proportion' => true,
 	),
 	'story/topIndex' => array(
 		'source' => 'story/source', 'width' => 630, 'height' => 391, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/story_top_index', 'folder'=>'/uploads/story_top_index', 'resize' => false, 'original' => false,  'crop' => true, 'proportion' => true,
