@@ -12,8 +12,8 @@ $cs->registerScriptFile('/js/jquery.customSelect.min.js', CClientScript::POS_END
 $cs->registerScriptFile('/js/yar/application.js', CClientScript::POS_END);
 $cs->registerScriptFile('/js/yar/template.js', CClientScript::POS_END);
 $cs->registerCssFile('http://fonts.googleapis.com/css?family=Oranienbaum|PT+Serif:400,700|Open+Sans:400,600,700&subset=latin,cyrillic');
-$cs->registerCssFile('/css/yar/styles.css');
-$cs->registerCssFile('/css/yar/template_styles.css');
+$cs->registerCssFile('/css/yar/styles.css?2015-01-21');
+$cs->registerCssFile('/css/yar/template_styles.css?2015-01-21');
 $cs->registerCssFile('/fancybox/jquery.fancybox.css?v=2.1.4');
 $cs->registerCssFile('/fancybox/helpers/jquery.fancybox-buttons.css?v=2.1.4');
 $cs->registerCssFile('/fancybox/helpers/jquery.fancybox-thumbs.css?v=2.1.4');
