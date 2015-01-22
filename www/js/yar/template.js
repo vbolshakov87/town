@@ -271,6 +271,10 @@ $(document).ready(function(){
             window.location.href = baseUrl;
         }
     });
+
+    $("img.lazy").lazyload({
+        threshold : 200
+    });
 });
 
 

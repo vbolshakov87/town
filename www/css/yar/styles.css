@@ -268,3 +268,6 @@ ol.flat li {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
+.lazy {
+    background: url("/images/yar/ajax-loader.gif") no-repeat center center;
+}

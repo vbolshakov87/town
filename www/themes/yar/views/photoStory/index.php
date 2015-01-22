@@ -47,7 +47,7 @@ $pager->pageVar = 'page';
 			$galleryUrl = Yii::app()->createUrl('photoStory/view', array('id' =>$item->id)).'#gallery'.$galleryItem->id;
 			$imageSrc = $imageSrcArr[$galleryItem->id];?>
             <figure onclick="location.href='<?=$galleryUrl?>'">
-                <a href="<?=$galleryUrl?>"><img src="<?=$imageSrc;?>" alt="<?=$galleryItem->name;?>"></a>
+                <a href="<?=$galleryUrl?>"><img  class="lazy" data-original="<?=$imageSrc;?>" alt="<?=$galleryItem->name;?>" width="246" height="220" /></a>
                 <figcaption class="cf" onclick="location.href='<?=$galleryUrl;?>'">
                     <span><?=$galleryItem->name;?></span>
                     <div>
