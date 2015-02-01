@@ -44,10 +44,6 @@ class PollWidget extends CPortlet
    */
   public function init()
   {
-    $assets = Yii::app()->assetManager->publish(dirname(__FILE__) . DIRECTORY_SEPARATOR . '../assets');
-    $clientScript = Yii::app()->clientScript;
-    $clientScript->registerCssFile($assets .'/poll.css');
-
     $this->_poll = $this->poll_id == 0 
       ? Poll::model()->latest()->find()
       : Poll::model()->findByPk($this->poll_id);

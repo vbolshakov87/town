@@ -86,9 +86,10 @@ $developmentConfig = array(
 			'scriptMap' => array
 			(
 				'yii.js' => '/skin-yii/yii.js',
-				'jquery' => 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js',
+				'jquery.js' => 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js',
 				'jquery.min' => 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js',
 				'jquery.min.js' => 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js',
+                'jquery.cookie.js' => false
 			),
 		),
 

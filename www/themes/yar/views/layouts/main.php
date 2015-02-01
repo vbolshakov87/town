@@ -4,6 +4,7 @@
  */
 $cs = Yii::app()->getClientScript();
 $cs->registerCoreScript('jquery');
+$cs->registerScriptFile('/js/cookie.js', CClientScript::POS_END);
 $cs->registerScriptFile('/fancybox/jquery.fancybox.pack.js', CClientScript::POS_END);
 $cs->registerScriptFile('/fancybox/helpers/jquery.fancybox-buttons.js', CClientScript::POS_END);
 $cs->registerScriptFile('/fancybox/helpers/jquery.fancybox-thumbs.js', CClientScript::POS_END);
@@ -11,6 +12,7 @@ $cs->registerScriptFile('/fancybox/jquery.fancybox.pack.js', CClientScript::POS_
 $cs->registerScriptFile('/js/jquery.customSelect.min.js', CClientScript::POS_END);
 $cs->registerScriptFile('/js/jquery.lazyload.js', CClientScript::POS_END);
 $cs->registerScriptFile('/js/yar/application.js', CClientScript::POS_END);
+$cs->registerScriptFile('/js/jquery.mosaicflow.min.js', CClientScript::POS_END);
 $cs->registerScriptFile('/js/yar/template.js?2015-01-22', CClientScript::POS_END);
 $cs->registerCssFile('http://fonts.googleapis.com/css?family=Oranienbaum|PT+Serif:400,700|Open+Sans:400,600,700&subset=latin,cyrillic');
 $cs->registerCssFile('/css/yar/styles.css?2015-01-22');
