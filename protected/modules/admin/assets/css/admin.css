@@ -119,3 +119,15 @@ td.label .errorMessage {
 	border: 1px solid #e1e1e8;
 	border-radius: 4px;
 }
+.crop-id-toggle {
+    margin: 10px 0;
+}
+.crop-id-wrapper  {
+    margin-top: 10px;
+}
+.crop-id-wrapper-hidden {
+    position: absolute;
+    width: 1100px;
+    height: 1100px;
+    left: -5000px;
+}

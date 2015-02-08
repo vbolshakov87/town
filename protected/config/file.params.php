@@ -64,19 +64,21 @@ $fileParams = array(
 
 
 	'figure/source' => array('path' => $_SERVER['DOCUMENT_ROOT'].'/../images_source/figure', 'folder' => '/source/figure', 'resize' => false, 'original' => true),
+	'figure_top/source' => array('path' => $_SERVER['DOCUMENT_ROOT'].'/../images_source/figure', 'folder' => '/source/figure', 'resize' => false, 'original' => true, 'crop' => true, 'createdFrom' => 'figure/source'),
+	'figure_big_top/source' => array('path' => $_SERVER['DOCUMENT_ROOT'].'/../images_source/figure', 'folder' => '/source/figure', 'resize' => false, 'original' => true, 'crop' => true, 'createdFrom' => 'figure/source'),
 
 	// изображения для показа в списке в админке
-	'figure_admin/form' => array(
-		'source' => 'story/source', 'width' => 500, 'height' => 500, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/figure_form', 'folder'=>'/uploads/figure_form', 'resize' => true, 'original' => false,  'crop' => false, 'proportion' => true,
-	),
+    'figure_admin/form' => array(
+        'source' => 'figure/source', 'width' => 500, 'height' => 500, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/figure_form', 'folder'=>'/uploads/figure_form', 'resize' => true, 'original' => false,  'crop' => false, 'proportion' => true,
+    ),
 	'figure/thumb' => array(
-		'source' => 'story/figure', 'width' => 260, 'height' => 500, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/figure_thumb', 'folder'=>'/uploads/figure_thumb', 'resize' => true, 'original' => false,  'crop' => false, 'proportion' => true,
+		'source' => 'figure/source', 'width' => 260, 'height' => 500, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/figure_thumb', 'folder'=>'/uploads/figure_thumb', 'resize' => true, 'original' => false,  'crop' => false, 'proportion' => true,
 	),
 	'figure/topIndex' => array(
-		'source' => 'figure/source', 'width' => 630, 'height' => 391, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/figure_top_index', 'folder'=>'/uploads/figure_top_index', 'resize' => false, 'original' => false,  'crop' => true, 'proportion' => true,
+		'source' => 'figure_big_top/source', 'width' => 630, 'height' => 391, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/figure_top_index', 'folder'=>'/uploads/figure_top_index', 'resize' => false, 'original' => false,  'crop' => true, 'proportion' => true,
 	),
 	'figure/top' => array(
-		'source' => 'photostory/source', 'width' => 300, 'height' => 189, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/figure_top', 'folder'=>'/uploads/figure_top', 'resize' => false, 'original' => false,  'crop' => true, 'proportion' => true,
+		'source' => 'figure_top/source', 'width' => 300, 'height' => 189, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/figure_top', 'folder'=>'/uploads/figure_top', 'resize' => false, 'original' => false,  'crop' => true, 'proportion' => true,
 	),
 	'figure/detail' => array (
 		'source' => 'figure/source', 'width' => 1000, 'height' => 1000, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/figure_detail', 'folder'=>'/uploads/figure_detail', 'resize' => true, 'original' => false, 'crop' => false, 'proportion' => true,
@@ -106,8 +108,9 @@ $fileParams = array(
 	'photoStoryDetail/thumb' => array (
 		'source' => 'gallery/source', 'width' => 300, 'height' => 64, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/photo_story_detail_thumb', 'folder'=>'/uploads/photo_story_detail_thumb', 'resize' => true, 'original' => false,  'crop' => false, 'proportion' => true,
 	),
-	// $item
-
+	'photoStoryDetail/thumb2' => array (
+		'source' => 'gallery/source', 'width' => 100, 'height' => 800, 'path' => $_SERVER['DOCUMENT_ROOT'].'/uploads/photo_story_detail_thumb_2', 'folder'=>'/uploads/photo_story_detail_thumb_2', 'resize' => true, 'original' => false,  'crop' => false, 'proportion' => true,
+	),
 
 
 
