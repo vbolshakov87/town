@@ -15,23 +15,7 @@ $(document).ready(function() {
 		'sizeLimit' : 524288,
 		'fileExt'        : '*.jpg;*.gif;*.png',
 		'fileDesc'       : 'Image Files (.JPG, .GIF, .PNG)',
-		'auto'      : true,
-		/*'onAllComplete' : function(event,data) {
-			console.log(event);
-			console.log(data);
-			if (fileInfo.length) {
-				jQuery.get('/includes/', function(e){
-					if (e != 'noimg') {
-						if(jQuery("#ava-info").length)  jQuery("#ava-info").attr("src", e);
-						else jQuery("#profile .left").prepend('<img id="ava-info" alt="" src="'+e+'">');
-					}
-
-				});
-			}
-		},*/
-		'onComplete'  : function(event, ID, fileObj, response, data) {
-			console.log(event);
-    	}
+		'auto'      : true
   });
 });
 </script>

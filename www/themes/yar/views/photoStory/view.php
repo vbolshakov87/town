@@ -22,6 +22,7 @@ $this->renderPartial('webroot.themes.yar.views._pageMetaTags', array('title' => 
 	<?$this->widget('FotoramaWidget', array('galleryPhotos' => $photoStory->gallery));?>
 </article>
 <p class="back-to-list"><a href="<?=Yii::app()->createUrl('photoStory/index')?>">Назад к списку фотогалерей</a></p>
+<?$this->widget('MoreAlbumsWidget', array('currentId' => $photoStory->id));?>
 <?$this->renderPartial('webroot.themes.yar.views._itemStat', array('item' => $photoStory))?>
 <?$this->renderPartial('webroot.themes.yar.views._detailPageRatingStars', array('model' => $photoStory));?>
 <div class="gallery-page-buttons">

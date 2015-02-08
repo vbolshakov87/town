@@ -57,8 +57,16 @@ class AdminModule extends CWebModule
 
 
 		//	$cs->registerCssFile($baseUrl . '/bootstrap/css/bootstrap-responsive.css');
-			$cs->registerScriptFile($baseUrl . '/fancybox/jquery.fancybox.pack.js');
-			$cs->registerCssFile($baseUrl . '/fancybox/jquery.fancybox.css?v=2.1.4');
+
+            // fancybox
+            $cs->registerScriptFile($baseUrl . '/fancybox/jquery.fancybox.pack.js');
+            $cs->registerCssFile($baseUrl . '/fancybox/jquery.fancybox.css?v=2.1.4');
+
+            // jcrop
+            $cs->registerScriptFile($baseUrl . '/jcrop/js/jquery.color.js');
+            $cs->registerScriptFile($baseUrl . '/jcrop/js/jquery.Jcrop.min.js');
+            $cs->registerCssFile($baseUrl . '/jcrop/css/jquery.Jcrop.min.css');
+
 			$cs->registerScriptFile($baseUrl . '/js/admin.js');
 			$cs->registerCssFile($baseUrl . '/css/admin.css');
 			$cs->registerCssFile($baseUrl . '/css/poll.css');

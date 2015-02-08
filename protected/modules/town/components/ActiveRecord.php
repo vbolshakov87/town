@@ -43,9 +43,9 @@ class ActiveRecord extends CActiveRecord
 	 * @param $imageUploaded
 	 * @return bool
 	 */
-	public function updateImage($field='image', $imageSizes = array(), $imageUploaded = null, $modelType = null)
+	public function updateImage($field='image', $imageSizes = array(), $imageUploaded = null, $modelType = null, $createdFromAttr = 'image')
 	{
-		// удаление фото если необходимо
+       // удаление фото если необходимо
 		if (isset($_POST[get_class($this)][$field . '_del'])) {
 			$this->deleteImage($field);
 			$this->{$field} = '';
@@ -58,7 +58,7 @@ class ActiveRecord extends CActiveRecord
 
 		if (!empty($imageUploaded->tempName)) {
 
-			// удаляем старые изображения для всех существующих типов
+            // удаляем старые изображения для всех существующих типов
 			$this->deleteImage($field);
 
 			// название файла в структуре
@@ -66,7 +66,7 @@ class ActiveRecord extends CActiveRecord
 				$modelType = strtolower(get_class($this));
 			}
 			$name = Image::createFileName($modelType.$field.$this->id, $imageUploaded);
-			Image::transform($modelType.'/source', $imageUploaded->tempName, $name);
+            Image::transform($modelType.'/source', $imageUploaded->tempName, $name);
 			foreach ($imageSizes as $imageSize) {
 				Image::transform($imageSize, Yii::app()->params['fileParams']['type'][$modelType.'/source']['path'] . DIRECTORY_SEPARATOR . $name, $name);
 			}
@@ -75,6 +75,50 @@ class ActiveRecord extends CActiveRecord
 			$this->{$field} = $name;
 		}
 	}
+
+
+    public function cropImageFromUploaded($field='image', $imageSizes = array(), $modelType = null, $createdFromAttr = 'image')
+    {
+        $imageUploaded = new StdClass();
+        if (empty($modelType)) {
+            $modelType = strtolower(get_class($this));
+        }
+
+        if (!empty($_POST[get_class($this)]['crop_'.$field]['x2'])) {
+
+            $coordinates = $_POST[get_class($this)]['crop_'.$field];
+
+            $type = $modelType.'/source';
+            $params = Yii::app()->params['fileParams']['type'][$type];
+            if (empty($params)) {
+                throw new CException($type . 'images type is not found');
+            }
+            if (empty($params['original'])) {
+                throw new CException($type . ' is not an original');
+            }
+            if (empty($params['createdFrom'])) {
+                throw new CException($type . ' does not have createdFrom param');
+            }
+            if (empty(Yii::app()->params['fileParams']['type'][Yii::app()->params['fileParams']['type'][$type]['createdFrom']])) {
+                throw new CException(Yii::app()->params['fileParams']['type']['createdFrom'] . 'images type is not found');
+            }
+
+            $createdFromParams = Yii::app()->params['fileParams']['type'][Yii::app()->params['fileParams']['type'][$type]['createdFrom']];
+            $originalFilePath = $createdFromParams['path'] . DIRECTORY_SEPARATOR . $this->{$createdFromAttr};
+
+
+            $imageUploaded->name = $this->{$createdFromAttr};
+            $destinationFilePath = '/tmp/'.Image::createFileName($modelType.$field.$this->id, $imageUploaded);
+
+            $croped = Image::cropBycoordinates($originalFilePath, $destinationFilePath, $coordinates);
+            if ($croped) {
+
+                $imageUploaded->tempName = $destinationFilePath;
+            }
+        }
+        //print 222; exit;
+        return $this->updateImage($field, $imageSizes, $imageUploaded, $modelType);
+    }
 
 
 
@@ -165,6 +209,26 @@ class ActiveRecord extends CActiveRecord
 
 		return  $params['folder']. '/' . $this->{$attribute};
 	}
+
+
+
+
+
+    public function getImageSize($type, $attribute='image')
+    {
+        if (empty($this->{$attribute}) || empty(Yii::app()->params['fileParams']['type'][$type]))
+            return '';
+
+        $params = Yii::app()->params['fileParams']['type'][$type];
+
+        $filePath = $params['path'] . DIRECTORY_SEPARATOR . $this->{$attribute};
+
+        if (!file_exists($filePath)) {
+            return array();
+        }
+
+        return getimagesize($filePath);
+    }
 
 
 	/**

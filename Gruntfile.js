@@ -12,7 +12,8 @@ module.exports = function(grunt) {
                     'www/css/yar/template_styles.css',
                     'www/fancybox/jquery.fancybox.css',
                     'www/fancybox/helpers/jquery.fancybox-buttons.css',
-                    'www/fancybox/helpers/jquery.fancybox-thumbs.css'
+                    'www/fancybox/helpers/jquery.fancybox-thumbs.css',
+                    'www/fotorama/fotorama.css'
                 ],
                 dest: 'www/yar-min/combined.css'
             },
@@ -27,7 +28,8 @@ module.exports = function(grunt) {
                     'www/js/jquery.lazyload.js',
                     'www/js/yar/application.js',
                     'www/js/jquery.mosaicflow.min.js',
-                    'www/js/yar/template.js'
+                    'www/js/yar/template.js',
+                    'www/fotorama/fotorama.js'
                 ],
                 dest: 'www/yar-min/combined.js'
             }

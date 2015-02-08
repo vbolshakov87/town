@@ -275,6 +275,11 @@ $(document).ready(function(){
     $("img.lazy").lazyload({
         threshold : 200
     });
+
+    $('.preview-gallery').mosaicflow({
+        itemSelector: '.mosaicflow__item',
+        minItemWidth: 80
+    });
 });
 
 

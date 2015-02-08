@@ -24,6 +24,7 @@ if (strpos($_SERVER['HTTP_HOST'], '.loc') === false) { // production website
 else { // development
 	ini_set('html_errors', 1); ini_set("display_errors","1"); ini_set("display_startup_errors","1"); ini_set('error_reporting', E_ALL);defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',10);defined('YII_DEBUG') or define('YII_DEBUG',true);
 
+    define('_ENVIRONMENT2', 'production');
 	define('_ENVIRONMENT', 'development');
 	defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',10);
 	defined('YII_DEBUG') or define('YII_DEBUG',true);

@@ -44,7 +44,7 @@ class Figure extends BaseFigure
 			'tags' => 'Теги',
 			'date_begin' => 'Начало',
 			'date_end' => 'Окончание',
-			'image' => 'Изображение',
+			'image' => 'Основное изображение',
 			'image_top_1' => 'Изображение 300x189',
 			'image_top_3' => 'Изображение 630x391',
 			'active' => 'Активность',

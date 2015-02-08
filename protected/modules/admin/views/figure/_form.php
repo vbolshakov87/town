@@ -182,14 +182,14 @@
 			<div class="form-group row <?if (!empty($model->errors['image_top_3'])) :?> error<?endif;?>">
 				<?=$form->labelEx($model,'image_top_3', array('class'=>'col-sm-2 control-label')); ?>
 				<div class="col-sm-10">
-					<?$this->widget('ImageUploadWidget', array('attribute'=>'image_top_3', 'model' => $model)); ?>
+					<?$this->widget('ImageCropWidget', array('attribute'=>'image_top_3', 'model' => $model, 'cropFrom' => 'image', 'cropFromType' => 'figure/detail', 'minWidth' => 630, 'minHeight' => 391, 'previewType' => 'figure/topIndex')); ?>
 				</div>
 			</div>
 
 			<div class="form-group row <?if (!empty($model->errors['image_top_1'])) :?> error<?endif;?>">
 				<?=$form->labelEx($model,'image_top_1', array('class'=>'col-sm-2 control-label')); ?>
 				<div class="col-sm-10">
-					<?$this->widget('ImageUploadWidget', array('attribute'=>'image_top_1', 'model' => $model)); ?>
+					<?$this->widget('ImageCropWidget', array('attribute'=>'image_top_1', 'model' => $model, 'cropFrom' => 'image', 'cropFromType' => 'figure/detail', 'minWidth' => 300, 'minHeight' => 189, 'previewType' => 'figure/top')); ?>
 				</div>
 			</div>
 

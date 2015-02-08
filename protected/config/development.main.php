@@ -195,7 +195,7 @@ $developmentConfig = array(
 			'salt' => 'e!0tT-81b;\7p_I>y7E№',
 		),
 
-		'imageProvider' => 'gd',
+		'imageProvider' => 'imagick',
 
 		'poll' => array(
 			// Force users to vote before seeing results
@@ -213,4 +213,14 @@ $developmentConfig = array(
 // конфиг изображений
 $developmentConfig['params']['fileParams']['type'] = require(dirname(__FILE__).'/file.params.php');
 
+// minimized files
+$minimized = json_decode(file_get_contents(dirname(__FILE__).'/filerevs.json'), true);
+foreach ($minimized as $filename => $hash) {
+    $filename = str_replace('www/', '/', $filename);
+    if (strpos($filename, '.css') !== false) {
+        $developmentConfig['params']['clientScriptMini']['css'][] = str_replace('.css', '.'.$hash.'.css', $filename);
+    } elseif (strpos($filename, '.js') !== false) {
+        $developmentConfig['params']['clientScriptMini']['js'][] = str_replace('.js', '.'.$hash.'.js', $filename);
+    }
+}
 return $developmentConfig;

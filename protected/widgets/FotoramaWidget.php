@@ -57,11 +57,6 @@ class FotoramaWidget extends CWidget
 
 	public function run()
 	{
-		$assetsDir = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'fotorama' .DIRECTORY_SEPARATOR . 'assets';
-		$assets    = Yii::app()->assetManager->publish($assetsDir);
-		Yii::app()->clientScript->registerCssFile($assets . '/fotorama.css');
-		Yii::app()->clientScript->registerScriptFile($assets . '/fotorama.js', CClientScript::POS_END);
-
 		$this->render('fotorama/photos', array('data'=>$this->_data));
 	}
 } 

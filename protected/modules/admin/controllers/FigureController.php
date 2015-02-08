@@ -28,8 +28,8 @@ class FigureController extends AdminController
 			if($model->save()) {
 				// сохранение изображения
 				$model->updateImage('image', array('figure_admin/form'));
-				$model->updateImage('image_top_1', array('figure_admin/form', 'figure/topIndex', 'figure/top'));
-				$model->updateImage('image_top_3', array('figure_admin/form', 'figure/topIndex', 'figure/top'));
+				$model->updateImage('image_top_1', array('figure_admin/form', 'figure/top'));
+				$model->updateImage('image_top_3', array('figure_admin/form', 'figure/topIndex'));
 				if (!empty($model->image)) {
 					$model->save();
 				}
@@ -75,8 +75,8 @@ class FigureController extends AdminController
 			$model->date_of_death = intval(strtotime($model->date_of_death));
 
 			$model->updateImage('image', array('figure_admin/form'));
-			$model->updateImage('image_top_1', array('figure_admin/form', 'figure/topIndex', 'figure/top'));
-			$model->updateImage('image_top_3', array('figure_admin/form', 'figure/topIndex', 'figure/top'));
+			$model->cropImageFromUploaded('image_top_1', array('figure_admin/form', 'figure/top'), 'figure_top');
+			$model->cropImageFromUploaded('image_top_3', array('figure_admin/form', 'figure/topIndex'), 'figure_big_top');
 
 			if($model->save()) {
 				CacheTaggedHelper::deleteByTags(array(Figure::cacheKey($model->id)));

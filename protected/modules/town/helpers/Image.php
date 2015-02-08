@@ -21,11 +21,12 @@ class Image extends File
 	    $path = $params['path'] . DIRECTORY_SEPARATOR . $name;
         $resize = !empty($params['resize']) && $params['resize'] === true ? true : false;
         $crop = !empty($params['crop']) && $params['crop'] === true ? true : false;
+        $original = !empty($params['original']) && $params['original'] === true ? true : false;
 
         // проверяем существование директории
         if (!file_exists(dirname($path))) mkdir(dirname($path), 0775, true);
 
-        if (!$resize && !$crop) {
+        if ($original || (!$resize && !$crop)) {
             copy($file, $path);
         }
         else {
@@ -284,11 +285,49 @@ class Image extends File
 
 			$this->_imageResizer->save();
 		}
-
-
 	}
 
-	/**
+
+    public static function cropBycoordinates($srcPath, $destPath, $coordinates = array(), $rewrite = true) {
+
+        if ( empty($srcPath) || empty($destPath) || empty($coordinates))  {
+            throw new CException('Плохой запрос', 400);
+        }
+
+        if ( !file_exists($srcPath))  {
+            throw new CException('Нет исходника', 500);
+        }
+
+        if (!$rewrite && file_exists($destPath))  {
+            throw new ImageResizerPSException('Невозможно переписать файл', 500);
+        }
+
+        $destPathDirName = dirname($destPath);
+
+        // создаем все необходимые директории
+        if (!is_dir($destPathDirName)){
+            mkdir($destPathDirName, 0777, true);
+        }
+
+        $srcImageData = getimagesize($srcPath);
+        $extension = Image::getExtensionByFileType($srcImageData['mime']);
+        $imageResizer = new ImageResizer();
+        $imageResizer->setSrcPath($srcPath, $extension);
+        $imageResizer->setDestPath($destPath);
+        $imageResizer->setDimension(floor($coordinates['x2']-$coordinates['x']), floor($coordinates['y2']-$coordinates['y']));
+        $imageResizer->setQuality(100);
+        $imageResizer->stripImage();
+        $imageResizer->destCropX = $coordinates['x'];
+        $imageResizer->destCropY = $coordinates['y'];
+        $imageResizer->crop();
+        $imageResizer->save();
+
+        return true;
+    }
+
+
+
+    /**
 	 * Вывод изображения в браузер
 	 */
 	public function out() {

@@ -70,10 +70,8 @@ class Document extends BaseDocument
 	{
 		$essence = $this->getControllerId();
 		$type = $essence.'/'.$type;
-
 		if (empty($modelType))
 			$modelType = strtolower($essence);
-
 		return parent::getImageSrc($type, $attribute, $create, $modelType);
 	}
 } 

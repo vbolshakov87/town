@@ -102,8 +102,8 @@ class PublicationActiveRecord extends ActiveRecord
 				$document->brief = $this->brief;
 				$document->content = $this->content;
 				$document->image = $this->image;
-				$document->image_top_1 = $this->image;
-				$document->image_top_3 = $this->image;
+				$document->image_top_1 = !empty($this->image_top_1) ? $this->image_top_1 : $this->image;
+				$document->image_top_3 = !empty($this->image_top_3) ? $this->image_top_3 : $this->image;
 				$document->main_page = $this->main_page;
 				$document->save();
 			}

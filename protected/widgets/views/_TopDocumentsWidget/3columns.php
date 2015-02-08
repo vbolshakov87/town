@@ -4,7 +4,7 @@
  */ ?>
 <div id="mainblocks" class="cf">
 	<?foreach ($documents as $k => $document) :
-		$storyImgSrc = $document->getDocumentImageSrc('top', 'image_top_3', true);
+		$storyImgSrc = $document->getDocumentImageSrc('top', 'image_top_1', true);
 		if (empty($storyImgSrc))
 			$storyImgSrc = $document->getDocumentImageSrc('top', 'image', true);
 		$storyUrl = $document->createUrl();
