@@ -11,7 +11,7 @@
  */
 $cropId = 'jcrop_target_'.md5(time().rand(1,100000));
 ?>
-<?if (!empty($fileSrc)) :?>
+<?if (!empty($fileOriginalSrc)) :?>
     <span class="image-del">
 	    <?if (!empty($fileOriginalSrc)):?>
             <a class="fancybox" href="<?=$fileOriginalSrc?>">

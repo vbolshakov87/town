@@ -23,7 +23,7 @@ class Story extends BaseStory
 	public function rules()
 	{
 		$rules = parent::rules();
-		$rules[] = array('image', 'file', 'allowEmpty' => true);
+	//	$rules[] = array('image', 'file', 'allowEmpty' => true);
 		return $rules;
 	}
 

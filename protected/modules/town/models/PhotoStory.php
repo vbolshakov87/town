@@ -25,7 +25,7 @@ class PhotoStory extends BasePhotoStory
 	public function rules()
 	{
 		$rules = parent::rules();
-		$rules[] = array('image, image_top_1, image_top_3, image_sidebar', 'file', 'allowEmpty' => true);
+	//	$rules[] = array('image, image_top_1, image_top_3, image_sidebar', 'file', 'allowEmpty' => true);
 		return $rules;
 	}
 

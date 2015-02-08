@@ -54,7 +54,8 @@ class Image extends File
                 $imageResize = new ImageResizer($file, $path, $width, $height);
 
                 // если не выставлены конечные размеры
-                if (empty($imageResize->destX) && empty($imageResize->destY)) $imageResize->setDimension($width, $height);
+                if (empty($imageResize->destX) && empty($imageResize->destY))
+                    $imageResize->setDimension($width, $height);
 
                 if (file_exists($path))  return true;
 
@@ -288,8 +289,8 @@ class Image extends File
 	}
 
 
-    public static function cropBycoordinates($srcPath, $destPath, $coordinates = array(), $rewrite = true) {
-
+    public static function cropBycoordinates($srcPath, $destPath, $coordinates = array(), $rewrite = true)
+    {
         if ( empty($srcPath) || empty($destPath) || empty($coordinates))  {
             throw new CException('Плохой запрос', 400);
         }
@@ -314,7 +315,7 @@ class Image extends File
         $imageResizer = new ImageResizer();
         $imageResizer->setSrcPath($srcPath, $extension);
         $imageResizer->setDestPath($destPath);
-        $imageResizer->setDimension(floor($coordinates['x2']-$coordinates['x']), floor($coordinates['y2']-$coordinates['y']));
+        $imageResizer->setDimension(floor($coordinates['w']), floor($coordinates['h']));
         $imageResizer->setQuality(100);
         $imageResizer->stripImage();
         $imageResizer->destCropX = $coordinates['x'];

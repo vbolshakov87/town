@@ -79,10 +79,9 @@ class StoryController extends AdminController
 				$model->date_end = $model->date_begin;
 			}
 
-			$model->updateImage('image', array('story_admin/form'));
-			$model->updateImage('image_top_1', array('story_admin/form', 'story/topIndex', 'story/top'));
-			$model->updateImage('image_top_3', array('story_admin/form', 'story/topIndex', 'story/top'));
-
+            $model->updateImage('image', array('story_admin/form'));
+            $model->cropImageFromUploaded('image_top_1', array('story_admin/form', 'story/top'), 'story_top');
+            $model->cropImageFromUploaded('image_top_3', array('story_admin/form', 'story/topIndex'), 'story_big_top');
 
 			if($model->save()) {
 				CacheTaggedHelper::deleteByTags(array(Story::cacheKey($model->id)));

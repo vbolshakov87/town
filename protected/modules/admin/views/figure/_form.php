@@ -179,7 +179,15 @@
 			<?endif;?>
 		</div>
 		<div class="tab-pane" id="images">
-			<div class="form-group row <?if (!empty($model->errors['image_top_3'])) :?> error<?endif;?>">
+
+            <div class="form-group row <?if (!empty($model->errors['image'])) :?> error<?endif;?>">
+                <?=$form->labelEx($model,'image', array('class'=>'col-sm-2 control-label')); ?>
+                <div class="col-sm-10">
+                    <?$this->widget('ImageUploadWidget', array('attribute'=>'image', 'model' => $model)); ?>
+                </div>
+            </div>
+
+            <div class="form-group row <?if (!empty($model->errors['image_top_3'])) :?> error<?endif;?>">
 				<?=$form->labelEx($model,'image_top_3', array('class'=>'col-sm-2 control-label')); ?>
 				<div class="col-sm-10">
 					<?$this->widget('ImageCropWidget', array('attribute'=>'image_top_3', 'model' => $model, 'cropFrom' => 'image', 'cropFromType' => 'figure/detail', 'minWidth' => 630, 'minHeight' => 391, 'previewType' => 'figure/topIndex')); ?>
@@ -193,12 +201,7 @@
 				</div>
 			</div>
 
-			<div class="form-group row <?if (!empty($model->errors['image'])) :?> error<?endif;?>">
-				<?=$form->labelEx($model,'image', array('class'=>'col-sm-2 control-label')); ?>
-				<div class="col-sm-10">
-					<?$this->widget('ImageUploadWidget', array('attribute'=>'image', 'model' => $model)); ?>
-				</div>
-			</div>
+
 		</div>
 		<div class="tab-pane" id="meta">
 			<div class="form-group row <?if (!empty($model->errors['meta_title'])) :?> error<?endif;?>">

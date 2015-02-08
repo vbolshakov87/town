@@ -119,6 +119,7 @@ class ImageResizer {
 
 		$this->_im->setCompressionQuality($this->_destQuality);
 		if (!is_null($this->destCropX) || !is_null($this->destCropY)) {
+       //     echo "<pre>";print_r(array($this->destX, $this->destY, $this->destCropX, $this->destCropY));echo "</pre>";exit;
 			$this->_im->cropImage($this->destX, $this->destY, $this->destCropX, $this->destCropY);
 		}
 		else {

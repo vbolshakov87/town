@@ -70,7 +70,7 @@ class ActiveRecord extends CActiveRecord
 			foreach ($imageSizes as $imageSize) {
 				Image::transform($imageSize, Yii::app()->params['fileParams']['type'][$modelType.'/source']['path'] . DIRECTORY_SEPARATOR . $name, $name);
 			}
-
+          //  exit;
 			// передаем данные в объект для сохранения в базе
 			$this->{$field} = $name;
 		}
@@ -112,11 +112,9 @@ class ActiveRecord extends CActiveRecord
 
             $croped = Image::cropBycoordinates($originalFilePath, $destinationFilePath, $coordinates);
             if ($croped) {
-
                 $imageUploaded->tempName = $destinationFilePath;
             }
         }
-        //print 222; exit;
         return $this->updateImage($field, $imageSizes, $imageUploaded, $modelType);
     }
 

@@ -92,11 +92,14 @@ class PhotoStoryController extends AdminController
 				$model->date_end = $model->date_begin;
 			}
 
-			$model->updateImage('image', array('photoStory_admin/form'));
-			$model->updateImage('image_top_1', array('photoStory_admin/form', 'photoStory/topIndex', 'photoStory/top'));
-			$model->updateImage('image_top_3', array('photoStory_admin/form', 'photoStory/topIndex', 'photoStory/top'));
-			$model->updateImage('image_sidebar', array('photoStory_admin/form', 'photoStory/sidebar'));
 
+            $model->updateImage('image', array('photoStory_admin/form'));
+            $model->cropImageFromUploaded('image_top_1', array('photoStory_admin/form', 'photoStory/top'), 'photostory_top');
+            $model->cropImageFromUploaded('image_top_3', array('photoStory_admin/form', 'photoStory/topIndex'), 'photostory_big_top');
+
+//			$model->updateImage('image_top_1', array('photoStory_admin/form', 'photoStory/topIndex', 'photoStory/top'));
+//			$model->updateImage('image_top_3', array('photoStory_admin/form', 'photoStory/topIndex', 'photoStory/top'));
+			$model->updateImage('image_sidebar', array('photoStory_admin/form', 'photoStory/sidebar'));
 
 
 			if($model->save()) {
