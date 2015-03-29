@@ -1,5 +1,7 @@
 <?php
+
 // echo md5('admin'); exit;
+date_default_timezone_set("Europe/Moscow");
 $defaultLang = 'ru';
 $lang = (!empty($_COOKIE['_lang'])) ? $_COOKIE['_lang'] : $defaultLang;
 if (!in_array($lang, array('ru', 'en'))) $lang = $defaultLang;
