@@ -4,7 +4,7 @@
  */
 $cs = Yii::app()->getClientScript();
 $cs->registerCoreScript('jquery');
-if (_ENVIRONMENT2 === 'production2') {
+if (_ENVIRONMENT2 === 'production') {
     foreach (Yii::app()->params['clientScriptMini']['js'] as $fileUrl) {
         $cs->registerScriptFile($fileUrl, CClientScript::POS_END);
     }

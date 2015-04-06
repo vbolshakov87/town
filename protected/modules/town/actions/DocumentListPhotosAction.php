@@ -18,4 +18,11 @@ class DocumentListPhotosAction extends DocumentListRedactionAction
         $criteria->addCondition('(SELECT count(1) from gallery_photo where gallery_photo.essence = \'photo_story\' and gallery_photo.`essence_id` = t.id limit 0,1) > 0');
 		return $criteria;
 	}
+
+    protected function _getCountAll()
+    {
+        $criteria = $this->_getCriteria();
+
+        return ActiveRecord::model($this->modelClass)->active()->count($criteria);
+    }
 } 

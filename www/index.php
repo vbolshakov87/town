@@ -14,6 +14,7 @@ define('SITE_LANGUAGE', $lang);
 if (strpos($_SERVER['HTTP_HOST'], '.loc') === false) { // production website
 	date_default_timezone_set('Europe/Moscow');
 	define('_ENVIRONMENT', 'production');
+    define('_ENVIRONMENT2', 'development');
 	define('IS_DEBUG', isset($_GET['yar_debug']));
 	if (IS_DEBUG) {
 		defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',10);	
@@ -27,7 +28,7 @@ else { // development
 
 	ini_set('html_errors', 1); ini_set("display_errors","1"); ini_set("display_startup_errors","1"); ini_set('error_reporting', E_ALL);defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',10);defined('YII_DEBUG') or define('YII_DEBUG',true);
 
-    define('_ENVIRONMENT2', 'production');
+    define('_ENVIRONMENT2', 'development');
 	define('_ENVIRONMENT', 'development');
 	defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',10);
 	defined('YII_DEBUG') or define('YII_DEBUG',true);

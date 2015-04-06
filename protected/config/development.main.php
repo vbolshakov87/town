@@ -156,7 +156,7 @@ $developmentConfig = array(
 
 		"cache" => array
 		(
-/* <- сотри слеш, чтобы включить кеш
+//* <- сотри слеш, чтобы включить кеш
 			"class" => "system.caching.CDummyCache",
 			/*/
 			"class" => "system.caching.CFileCache",

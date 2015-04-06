@@ -21,7 +21,6 @@ $imageSrcArr = array();
 $pager = new CPagination($countAll);
 $pager->pageSize = $limit;
 $pager->pageVar = 'page';
-
 ?>
 <?foreach ($items as $item) :?>
 <?/*<h2><a href="<?=Yii::app()->createUrl($this->getRoute(), array('century' => Date::getCentury($item->date_begin, 'param')))?>"><?=Date::getCentury($item->date_begin);?> век</a></h2>*/?>
