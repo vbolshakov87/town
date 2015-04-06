@@ -26,6 +26,15 @@ class Document extends BaseDocument
 		);
 	}
 
+    public function relations()
+    {
+        return array(
+            'photoStory' => array(self::BELONGS_TO, 'PhotoStory', 'essence_id'),
+            'story' => array(self::BELONGS_TO, 'Story', 'essence_id', 'on' => 'document.essence = "story"'),
+            'figure' => array(self::BELONGS_TO, 'Figure', 'essence_id', 'on' => 'document.essence = "figure"'),
+        );
+    }
+
 
 	/**
 	 * Url детальной страницы сущности
@@ -72,6 +81,30 @@ class Document extends BaseDocument
 		$type = $essence.'/'.$type;
 		if (empty($modelType))
 			$modelType = strtolower($essence);
+       // print '<pre>'; print_r(array($type, $attribute, $create, $modelType)); print '</pre>';
 		return parent::getImageSrc($type, $attribute, $create, $modelType);
 	}
+
+
+    public function getEssenceTitleLink()
+    {
+        switch ($this->essence) {
+            case 'story':
+                $label = Yii::t('all', 'Stories');
+                break;
+            case 'figure':
+                $label = Yii::t('all', 'Figures');
+                break;
+            case 'photo_story':
+                $label = Yii::t('all', 'Photo stories');
+                break;
+            default:
+                print '<pre>'; print_r($this->essence); print '</pre>'; exit;
+        }
+
+        return array(
+            'link' => Yii::app()->createUrl($this->getControllerId().'/index'),
+            'label' => $label
+        );
+    }
 } 

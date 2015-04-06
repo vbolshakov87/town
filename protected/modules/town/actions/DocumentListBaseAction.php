@@ -25,6 +25,7 @@ abstract class DocumentListBaseAction extends CAction
 		if (is_null($this->limit))
 			$this->limit = Yii::app()->params['limitOnPage'];
 
+
 		if (empty($this->_usedIds))
 			$this->_usedIds = Yii::app()->params['alreadyUsedIds'];
 

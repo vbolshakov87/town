@@ -12,7 +12,7 @@ class StoryTownController extends FrontController
 		return array(
 			'index' => array(
 				'class' => 'DocumentListRedactionAction',
-				'limit' => 5,
+				'limit' => Yii::app()->params['limitOnPage'],
 				'modelClass' => 'Story',
 			),
 

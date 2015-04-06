@@ -4,7 +4,7 @@
  */
 $cs = Yii::app()->getClientScript();
 $cs->registerCoreScript('jquery');
-if (_ENVIRONMENT2 === 'production') {
+if (_ENVIRONMENT2 === 'production2') {
     foreach (Yii::app()->params['clientScriptMini']['js'] as $fileUrl) {
         $cs->registerScriptFile($fileUrl, CClientScript::POS_END);
     }
@@ -22,12 +22,14 @@ if (_ENVIRONMENT2 === 'production') {
     $cs->registerScriptFile('/js/yar/application.js', CClientScript::POS_END);
     $cs->registerScriptFile('/js/jquery.mosaicflow.min.js', CClientScript::POS_END);
     $cs->registerScriptFile('/js/yar/template.js?2015-01-22', CClientScript::POS_END);
-    $cs->registerCssFile('http://fonts.googleapis.com/css?family=Oranienbaum|PT+Serif:400,700|Open+Sans:400,600,700&subset=latin,cyrillic');
-    $cs->registerCssFile('/css/yar/styles.css?2015-01-22');
-    $cs->registerCssFile('/css/yar/template_styles.css?2015-01-22');
-    $cs->registerCssFile('/fancybox/jquery.fancybox.css?v=2.1.4');
-    $cs->registerCssFile('/fancybox/helpers/jquery.fancybox-buttons.css?v=2.1.4');
-    $cs->registerCssFile('/fancybox/helpers/jquery.fancybox-thumbs.css?v=2.1.4');
+    $cs->registerScriptFile('/fotorama/fotorama.js', CClientScript::POS_END);
+    $cs->registerCssFile('/css/yar/font.css');
+    $cs->registerCssFile('/css/yar/styles.css');
+    $cs->registerCssFile('/css/yar/template_styles.css');
+    $cs->registerCssFile('/fancybox/jquery.fancybox.css');
+    $cs->registerCssFile('/fancybox/helpers/jquery.fancybox-buttons.css');
+    $cs->registerCssFile('/fancybox/helpers/jquery.fancybox-thumbs.css');
+    $cs->registerCssFile('/fotorama/fotorama.css');
 }
 
 ?>

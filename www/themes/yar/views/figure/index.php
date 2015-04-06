@@ -1,37 +1,34 @@
 <?
 /**
-* @var $items Figure[]
-* @var $this FrontController
-* @var $countRemains
-* @var $page
-*/
+ * @var $items Figure[]
+ * @var $this FrontController
+ * @var $page
+ */
+$pager = new CPagination($countAll);
+$pager->pageSize = $limit;
+$pager->pageVar = 'page';
 ?>
 <div class="col-cont box">
+    <section class="publications">
+        <?foreach ($items as $story) :
+            $image = $story->getDocumentImageSrc('itemsList', 'image', true);
+            $url = Yii::app()->createUrl('figure/view', array('id'=>$story->id));
+            if (empty($story->brief)) {
+                $story->brief = TextModifier::stripTextWords( strip_tags($story->content), 0, 250, '&hellip;');
+            }
+            $story->brief = TextModifier::stripTextWords( strip_tags($story->brief), 0, 250, '&hellip;');
+            ?>
+            <div class="publications__article">
 
-	<?$this->widget('TopDocumentsWidget', array('type' => 'figure', 'columns' => 2, 'limit' => 2))?>
-
-
-	<section id="mainlist">
-		<div class="articles">
-			<?foreach ($items as $figure) :
-				$this->renderPartial('_listItem', array('item' => $figure));
-			endforeach;?>
-		</div>
-
-		<div class="all all-begin"<?if ($page < 2):?> style="display: none;" <?endif;?>>
-			<a href="<?=Yii::app()->createUrl('figure/index')?>">В начало</a>
-		</div>
-
-		<?if ($countRemains > 0):
-			$params = array('page'=>($page+1));
-			$rubricId = intval(Yii::app()->getRequest()->getParam('rubricId', 0));
-			if (Yii::app()->getRequest()->getParam('rubricId', 0) > 0)
-				$params['rubricId'] = $rubricId;
-			?>
-			<div class="all">
-				<a href="<?=Yii::app()->createUrl('figure/index', $params)?>" id="next" data-type="figure" data-page="<?=($page+1)?>" data-href="<?=Yii::app()->createUrl('figure/index')?>">Еще <?=$countRemains?> <?=ChoiceFormat::format(array('статья', 'статьи', 'статей'), $countRemains);?></a>
-			</div>
-		<?endif;?>
-	</section>
+                <?if (!empty($image)):?>
+                    <a href="<?=$url?>" class="items-list__img-link items-list__img-link-figure" data-bordercolor="#6fc068"><img src="<?=$image?>" alt="<?=TextModifier::textForMetaTag($story->title)?>" class="publication__img publication__img-figure"></a>
+                <?endif;?>
+                <a href="<?=$url?>" class="publications__title"><?=$story->title?></a>
+                <div class="publications__brief"><?=$story->brief?></div>
+                <?$this->renderPartial('webroot.themes.yar.views._documentItemCounts', array('item' => $story))?>
+                <div class="clear"></div>
+            </div>
+        <?endforeach;?>
+    </section>
+    <?$this->widget('LinkPager', array('pages' => $pager, 'showLastPage' => true)); ?>
 </div>
-

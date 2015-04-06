@@ -278,7 +278,7 @@ $(document).ready(function(){
 
     $('.preview-gallery').mosaicflow({
         itemSelector: '.mosaicflow__item',
-        minItemWidth: 80
+        minItemWidth: 100
     });
 });
 

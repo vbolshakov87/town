@@ -31,4 +31,9 @@
 		<?endif;?>
 	</section>
 
+
+   <article class="why">
+       <?$this->widget('ContentBlockWidget', array('name' => 'why'));?>
+   </article>
+
 </div>

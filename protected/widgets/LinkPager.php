@@ -1,9 +1,6 @@
 <?php
 class LinkPager extends CLinkPager
 {
-
-	const CSS_FIRST_PAGE='none';
-	const CSS_LAST_PAGE='none';
 	const CSS_PREVIOUS_PAGE='g-paginator-prev g-png-alpha';
 	const CSS_NEXT_PAGE='g-paginator-next g-png-alpha';
 	const CSS_INTERNAL_PAGE='';
@@ -12,7 +9,7 @@ class LinkPager extends CLinkPager
 
 	public $htmlOptions = array('class' => 'pages width720 mb20');
 	public $cssFile = false;
-	public $maxButtonCount = 10;
+	public $maxButtonCount = 5;
 
 	public $nextPageLabel = 'Следующая';
 	public $prevPageLabel = 'Предыдущая';
@@ -21,14 +18,6 @@ class LinkPager extends CLinkPager
 	public $showNextPage = false;
 
 
-	public function init()
-	{
-		$this->firstPageLabel='1';
-		if(!isset($this->htmlOptions['id']))
-			$this->htmlOptions['id']=$this->getId();
-		if(!isset($this->htmlOptions['class']))
-			$this->htmlOptions['class']='yiiPager';
-	}
 
 
 	/**
@@ -60,7 +49,7 @@ class LinkPager extends CLinkPager
 		$buttons=$this->createPageButtons();
 		if(empty($buttons))
 			return;
-		echo $this->header;
+	//	echo $this->header;
 		echo CHtml::tag('div',$this->htmlOptions,implode("\n",$buttons));
 		echo $this->footer;
 	}
@@ -98,33 +87,16 @@ class LinkPager extends CLinkPager
 		$buttons=array();
 
 
-
-
-		// next page
-		if(($page=$currentPage+1)>=$pageCount-1)
-			$page=$pageCount-1;
-		if($currentPage+1 < $pageCount) {
-			$buttons[]='<div class="fr ar">';
-			$buttons[]=$this->createPageButton($this->nextPageLabel,$page,self::CSS_NEXT_PAGE,$currentPage>=$pageCount-1,false);
-			$buttons[]='</div>';
-			$nextPage = $this->createPageButton('...',$page,self::CSS_NEXT_PAGE,$currentPage>=$pageCount-1,false);
-		}
-
-		// prev page
-		if(($page=$currentPage-1)<0) {
-			$page=0;
-		}
-		if ($currentPage > 0) {
-			$buttons[]='<div class="fr ar">';
-			$buttons[]=$this->createPageButton($this->prevPageLabel,$page,self::CSS_PREVIOUS_PAGE,$currentPage<=0,false);
-			$buttons[]='</div>';
-		}
-
 		$buttons[] = '<div class="pageslist">';
 
 		// first page
-		if ($currentPage >$this->maxButtonCount)
-			$buttons[]= $this->createPageButton($this->firstPageLabel,0,self::CSS_FIRST_PAGE,$currentPage<=0,false) . '<span>...</span>';
+		if ($currentPage >($this->maxButtonCount - ($this->maxButtonCount/2))) {
+            //print 111; exit;
+            $buttons[]= $this->createPageButton($this->firstPageLabel,0,self::CSS_FIRST_PAGE,$currentPage<=0,false);
+            if ($currentPage >($this->maxButtonCount - floor($this->maxButtonCount/2))) {
+                $buttons[] = '<span>...</span>';
+            }
+        }
 
 		// internal pages
 		for($i=$beginPage;$i<=$endPage;++$i) {
@@ -135,9 +107,6 @@ class LinkPager extends CLinkPager
 			$buttons[]=$this->createPageButton($i+1,$i,self::CSS_INTERNAL_PAGE,false,$i==$currentPage);
 		}
 
-		if ($this->showNextPage) {
-			$buttons[]=$nextPage;
-		}
 
 
 		// last page

@@ -6,7 +6,7 @@
 $title = TextModifier::textForMetaTag(CHtml::encode(CHtml::decode($figure->title)));
 $keywords = $title;
 $description = TextModifier::textForMetaTag($figure->brief);
-$pageUrl = Yii::app()->createAbsoluteUrl('story/view', array('id'=>$figure->id));
+$pageUrl = Yii::app()->createAbsoluteUrl('figure/view', array('id'=>$figure->id));
 $image = $figure->getImageSrc('figure/detail', 'image', true);
 $this->renderPartial('webroot.themes.yar.views._pageMetaTags', array('title' => $title, 'keywords' => $keywords, 'description' => $description, 'pageUrl' => $pageUrl, 'image' => $image));
 

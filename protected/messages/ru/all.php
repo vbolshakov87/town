@@ -21,9 +21,6 @@ return array(
 	'Incorrect country' => 'Страна выбрана не верно',
 
 	'Feed' => 'Лента',
-	'Dives' => 'Погружения',
-	'Friends' => 'Друзья',
-	'Statistic' => 'Статистика',
 	'from' => 'из',
 	'Photo stories' => 'Фотохроника',
 	'Stories' => 'Исторические материалы',

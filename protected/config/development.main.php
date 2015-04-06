@@ -156,7 +156,7 @@ $developmentConfig = array(
 
 		"cache" => array
 		(
-//* <- сотри слеш, чтобы включить кеш
+/* <- сотри слеш, чтобы включить кеш
 			"class" => "system.caching.CDummyCache",
 			/*/
 			"class" => "system.caching.CFileCache",
@@ -177,7 +177,7 @@ $developmentConfig = array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		'og_site' => 'www.old-yar.ru',
-		'limitOnPage' => 10,
+		'limitOnPage' => 12,
 		'alreadyUsedIds' => array(),
 		// настройки для отправки писем
 		'mail' => array(

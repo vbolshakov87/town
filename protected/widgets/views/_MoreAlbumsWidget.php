@@ -12,12 +12,13 @@
             $k = 0;
             foreach ($item->gallery as $galleryItem) :
                 $imageSrc = $galleryItem->getImageSrc('photoStoryDetail/thumb2', 'image', true);
+                $galleryUrl = Yii::app()->createUrl('photoStory/view', array('id' =>$item->id)).'#gallery'.$galleryItem->id;
                 if (empty($imageSrc)) continue;
                 $k++;
                 if ($k>15) break;
             ?>
                 <div class="mosaicflow__item">
-                    <img src="<?=$imageSrc;?>" alt="<?=$galleryItem->name;?>" />
+                    <a href="<?=$galleryUrl?>"><img src="<?=$imageSrc;?>" alt="<?=$galleryItem->name;?>" /></a>
                 </div>
             <?endforeach;?>
             </article>
